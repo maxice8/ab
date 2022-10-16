@@ -1,0 +1,128 @@
+# http://www.graphviz.org/content/cluster
+
+digraph Formables {
+    
+    node[shape=rectangle]
+    
+    gbr[label="Britannia"]
+    gbr[style=filled]
+    gbr[fillcolor="firebrick1;0.5:yellow"]
+    
+    goi[label="Goidelia"]
+    goi[style=filled]
+    goi[fillcolor="yellow;0.5:darkolivegreen1"]
+    
+    subgraph cluster_0 {
+        color = yellow
+        
+        node [style=filled]
+        node [fillcolor=yellow]
+        
+        Paths[label="Scotland"]
+        
+        sco[label="Anglophile Scotland"]
+        alba[label="Alba"]
+        gae[label="Gaeldom"]
+        
+        Paths->sco
+        Paths->alba
+        Paths->gae
+        
+        alba->Albion
+        
+        sco->Albion
+        
+        gae->Albion
+        
+        label = "Scotland"
+    }
+    
+    sco->gbr
+    gae->goi
+    
+    subgraph cluster_1 {
+     label = "England"
+     
+     node [style=filled]
+     node [fillcolor=firebrick1]
+     
+     eng[label="England"]
+        eng->gbr
+    }
+    
+    
+    subgraph cluster_2 {
+        
+        node[style=filled]
+        node[fillcolor=greenyellow]
+        
+        Tyrone->Ireland
+        Ulster->Ireland
+        Kildare->Ireland
+        Thormond->Ireland
+        Ormond->Ireland
+        Offaly->Ireland
+        Munster->Ireland
+        label="Irish Minors"
+        
+    }
+    
+    subgraph cluster_3 {
+        node [style=filled]
+        node [fillcolor=darkolivegreen1]
+        Connacht->goi
+        label="Connacht"
+    }
+    
+    subgraph cluster_4 {
+        node [style=filled]
+        node [fillcolor=gray87]
+        
+        Cork->Finngail
+        Waterford->Finngail
+        Dublin->Finngail
+        label="Norse-Gaelic Minors"
+    }
+    
+    subgraph cluster_5 {
+        node[style=filled]
+        node [fillcolor=chocolate2]
+        
+        label="Wales"
+        Wales->Prydain
+    }
+    
+    subgraph cluster_6 {
+        node[style=filled]
+        node[fillcolor=coral]
+        
+        Cornwall->Dumnonia
+        label="Cornwall"
+    }
+    
+    subgraph cluster_7 {
+        node[style=filled]
+        node[fillcolor=burlywood]
+        
+        Brittany->Gallia
+        label="Brittany"
+    }
+    
+    Albion->Munster[style=invis]
+    #Finngail->Wales[style=invis]
+    #Finngail->Cornwall[style=invis]
+    
+    clt[label="Celtica"]
+    clt[style=filled]
+    clt[fillcolor=chartreuse]
+    
+    Paths->clt
+    Ireland->clt
+    Dumnonia->clt
+    Wales->clt
+    Brittany->clt
+    Gallia->clt
+    gae->clt
+    
+}
+
