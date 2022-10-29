@@ -81,6 +81,9 @@ digraph Formables {
         Cork->Finngail
         Waterford->Finngail
         Dublin->Finngail
+        Finngail->"Dubgaill and Finngail"
+        "Dubgaill and Finngail"->Scandinavia
+        "Dubgaill and Finngail"->"North Sea Empire"
         label="Norse-Gaelic Minors"
     }
     
@@ -125,4 +128,5 @@ digraph Formables {
     gae->clt
     
 }
+
 
