@@ -1,0 +1,8 @@
+#!/bin/sh
+# Generate [localisation_keys] for each dlc in the format
+# [has_$DLC$]
+# example:
+# Lions of the North becomes [has_Lions_of_the_North]
+while read -r dlc; do
+	printf '[has_%s]' "$(echo "$dlc" | tr ' ' _)"
+done

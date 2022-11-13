@@ -1,0 +1,36 @@
+#!/bin/sh
+# Generates the localisation for a DLC+icon
+# Examples:
+# 	Lions of the North becomes:
+# 		Lions_of_the_North:0 "£DLC_lon£ Lions of the North\n"
+# 	Art of War becomes:
+# 		Art_of_War:0 "£DLC_aow£ Art of War\n"
+# 	Wealth of Nations becomes:
+# 		Wealth_of_Nations:0 "£DLC_won£ Wealth of Nations\n"
+while read -r dlc; do
+	# Generate the key for the DLC icon, we will need
+	# some logic
+	case "$dlc" in
+		# Special case.
+		"The Cossacks")
+			dlc_icon=DLC_cos
+			;;
+		# Special case.
+		"Lions of the North")
+			dlc_icon=DLC_lon
+			;;
+		# DLC with spaces are converted into the lowercase
+		# first letter of each word
+		*[[:space:]]*)
+			# shellcheck disable=2086
+			dlc_icon="DLC_$(set -f; printf '%c' $dlc | tr '[:upper:]' '[:lower:]')"
+			dlc_icon="$(printf "%s\n" "$dlc_icon")"
+			;;
+		*)
+			dlc_icon="DLC_$(printf '%s\n' "$dlc" | cut -c 1-3 | tr '[:upper:]' '[:lower:]')"
+			;;
+	esac
+	cat <<__EOF__
+ $(echo "$dlc" | tr ' ' _):0 "£$dlc_icon£ $dlc\n"
+__EOF__
+done

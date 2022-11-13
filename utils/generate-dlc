@@ -1,0 +1,34 @@
+#!/bin/sh
+# Generates code for customizable localisation for each
+# DLC.
+# Example:
+# Lions of the North generates:
+# ```
+# defined_text = {
+# 	name = has_Lions_of_the_North
+# 	random = no
+#
+# 	text = {
+# 		localisation_key = Lions_of_the_North
+# 		trigger = {
+# 			NOT = { has_dlc = "Lions of the North" }
+# 		}
+# 	}
+# }
+# ```
+while read -r dlc; do
+	cat <<__EOF__
+defined_text = {
+	name = has_$(echo "$dlc" | tr ' ' _)
+	random = no
+
+	text = {
+		localisation_key = $(echo "$dlc" | tr ' ' _)
+		trigger = {
+			NOT = { has_dlc = "$dlc" }
+		}
+	}
+}
+
+__EOF__
+done
