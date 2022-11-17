@@ -111,7 +111,9 @@ digraph Formables {
         label="Brittany"
     }
     
-    Albion->Munster[style=invis]
+    gbr->Munster[style=invis]
+    goi->Cornwall[style=invis]
+    Albion->Offaly[style=invis]
     #Finngail->Wales[style=invis]
     #Finngail->Cornwall[style=invis]
     
@@ -126,7 +128,5 @@ digraph Formables {
     Brittany->clt
     Gallia->clt
     gae->clt
-    
+    "Dubgaill and Finngail"->clt
 }
-
-
